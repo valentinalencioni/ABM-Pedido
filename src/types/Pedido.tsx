@@ -41,17 +41,17 @@ import { TipoEnvio } from "./TipoEnvio";
 //     ]
 // }
 export interface Pedido{
-    fechaPedido:Date;
-    horaEstimadaFinalizacion: Date;
+    fechaPedido:Date|null;
+    horaEstimadaFinalizacion: Date|null;
     total: number;
     totalCosto: number;
-    estado: EstadoPedido;
-    tipoEnvio: TipoEnvio;
-    formaPago: FormaPago;
-    domicilioEntrega: Domicilio;
-    fechaAlta: Date;
-    fechaModificacion: Date;
-    fechaBaja: Date;
-    detallesPedidos: DetallePedido[];
+    estado: EstadoPedido|null;
+    tipoEnvio: TipoEnvio|null;
+    formaPago: FormaPago|null;
+    domicilioEntrega: Domicilio|null;
+    fechaAlta: Date|null;
+    fechaModificacion: Date|null;
+    fechaBaja: Date|null;
+    detallesPedidos: DetallePedido[]|null;
     id: number;
 }

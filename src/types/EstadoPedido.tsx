@@ -1,10 +1,10 @@
 export enum EstadoPedido{
-    PENDIENTE_PAGO,
-    PAGADO,
-    PREPARACION,
-    PENDIENTE_ENTREGA,
-    EN_CAMINO,
-    CANCELADO,
-    NOTA_CREDITO,
-    COMPLETADO 
+    PENDIENTE_PAGO= 'pendiente_pago',
+    PAGADO='pagado',
+    PREPARACION='reparacion',
+    PENDIENTE_ENTREGA='pendiente_entrega',
+    EN_CAMINO='en camino',
+    CANCELADO='cancelado',
+    NOTA_CREDITO='nota credito',
+    COMPLETADO='completado' 
 }

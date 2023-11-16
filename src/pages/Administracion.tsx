@@ -1,10 +1,9 @@
-import RubroArticuloInsumoTable from "../components/RubroArticuloInsumoTable/RubroArticuloInsumoTable"
-
+import PedidoTable from "../components/PedidoTable/PedidoTable"
 
 const Administacion = ()=> {
     return (
         <>
-            <RubroArticuloInsumoTable/>
+            <PedidoTable/>
         </>
     )
 }

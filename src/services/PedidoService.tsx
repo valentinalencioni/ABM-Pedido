@@ -39,7 +39,7 @@ export const PedidoService={
 
     },
 
-    deleteRubroArticuloInsumo: async (id:number):Promise<void>=>{
+    deletePedido: async (id:number):Promise<void>=>{
         await fetch( `${BASE_URL}/api/v1/pedidos/${id}`,{method: "DELETE",});
     } 
 }
