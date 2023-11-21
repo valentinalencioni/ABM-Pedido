@@ -42,7 +42,7 @@ import { TipoEnvio } from "./TipoEnvio";
 // }
 export interface Pedido{
     fechaPedido:Date|null;
-    horaEstimadaFinalizacion: Date|null;
+    horaEstimadaFinalizacion: '';
     total: number;
     totalCosto: number;
     estado: EstadoPedido|null;

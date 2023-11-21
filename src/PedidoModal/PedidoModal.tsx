@@ -6,6 +6,8 @@ import * as Yup from 'yup';
 import {useFormik} from "formik";
 import { toast } from "react-toastify";
 import { EstadoPedido } from "../types/EstadoPedido";
+import { TipoEnvio } from "../types/TipoEnvio";
+import { FormaPago } from "../types/FormaPago";
 
 type PedidoModalProps={
     show: boolean;
@@ -59,7 +61,7 @@ const PedidoModal=({show,onHide,title,modalType,ped,refreshData}: PedidoModalPro
         pisoDpto: Yup.number().integer().min(0),
         fechaAlta: Yup.date().required('Se requiere la fecha'),
         fechaModificacion:Yup.date().required('Se requiere la fecha'),
-        fechaBaja: Yup.date().required('Se requiere la fecha'),
+        fechaBaja: Yup.date(),
     });
     const detPedidoSchema=Yup.object({
         cantidad: Yup.number().integer().min(0),
@@ -71,12 +73,12 @@ const PedidoModal=({show,onHide,title,modalType,ped,refreshData}: PedidoModalPro
             // id: Yup.number().integer().min(0),
             // denominacion: Yup.string().required('Se requiere el nombre del rubro'),
             fechaPedido:Yup.date().required('Se requiere la fecha'),
-            horaEstimadaFinalizacion: Yup.date().required('Se requiere la fecha'),
+            horaEstimadaFinalizacion: Yup.string().matches(/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/, 'Ingresa una hora válida (formato HH:mm)').required('La hora es obligatoria'),
             total:Yup.number().integer().min(0).required('Se requiere el total'),
             totalCosto: Yup.number().integer().min(0).required('Se requiere el total del costo'),
             estado: Yup.mixed<EstadoPedido>().oneOf(Object.values(EstadoPedido)).required('Se requiere el estado del pedido'),
-            tipoEnvio: Yup.mixed<EstadoPedido>().oneOf(Object.values(EstadoPedido)).required('Se requiere el tipo de envío'),
-            formaPago: Yup.mixed<EstadoPedido>().oneOf(Object.values(EstadoPedido)).required('Se requiere la forma de pago'),
+            tipoEnvio: Yup.mixed<TipoEnvio>().oneOf(Object.values(TipoEnvio)).required('Se requiere el tipo de envío'),
+            formaPago: Yup.mixed<FormaPago>().oneOf(Object.values(FormaPago)).required('Se requiere la forma de pago'),
             domicilioEntrega: domicilioSchema.required('El domicilio es obligatorio'),
             fechaAlta: Yup.date().required('Se requiere la fecha'),
             fechaModificacion: Yup.date(),
@@ -139,7 +141,7 @@ const PedidoModal=({show,onHide,title,modalType,ped,refreshData}: PedidoModalPro
                                     <FormLabel> Hora Estimada Finalizacion </FormLabel>
                                     <Form.Control 
                                         name= "horaEstimadaFinalizacion"
-                                        type= "date"
+                                        type= "string"
                                         value={formik.values.horaEstimadaFinalizacion?.toString()}
                                         onChange={formik.handleChange}
                                         onBlur={formik.handleBlur}
